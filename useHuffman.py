@@ -1,4 +1,4 @@
-from huffman import HuffmanCoding
+from huffman_file import HuffmanCoding
 import sys
 
 path = "sample.txt"

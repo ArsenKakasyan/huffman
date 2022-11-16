@@ -21,7 +21,6 @@ probabilities = []
         Если 111 - добавить 1
 5.После того, как коды Хаффмана сгенерированы, прочитаем их в обратном порядке, чтобы получить final_code. Это делается для генерации кода, как это делается при обходе дерева.
 6.final_code — это список, содержащий все коды Хаффмана в порядке вероятностей.
-#TODO lz78
     '''
 
 class HuffmanCode:
@@ -40,7 +39,7 @@ class HuffmanCode:
         mean_length = sum([a*b for a, b in zip(length_of_code, self.probability)])
 
         print("Энтропия: %f" % mean_length)
-        'print("Эффективность кода: %f" % (entropy_of_code/mean_length))'
+        #print("Эффективность кода: %f" % (entropy_of_code/mean_length))
 
     def compute_code(self):
         num = len(self.probability)
