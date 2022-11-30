@@ -21,7 +21,7 @@ probabilities = []
         Если 111 - добавить 1
 5.После того, как коды Хаффмана сгенерированы, прочитаем их в обратном порядке, чтобы получить final_code. Это делается для генерации кода, как это делается при обходе дерева.
 6.final_code — это список, содержащий все коды Хаффмана в порядке вероятностей.
-    '''
+'''
 
 class HuffmanCode:
     def __init__(self,probability):
@@ -112,13 +112,10 @@ P = probabilities
 
 huffman_code = huffmanClassObject.compute_code()
 
-print(' Char | Huffman code ')
-print('----------------------')
+print("Символ\tЧастота\tКод")
+print('---------------------------------')
 
-for id,char in enumerate(freq):
-    if huffman_code[id]=='':
-        print(' %-4r |%12s' % (char[0], 1))
-        continue
-    print(' %-4r |%12s' % (char[0], huffman_code[id]))
+for i in range(len(freq)):
+    print("{}\t{}\t{}".format(freq[i][0], freq[i][1], huffman_code[i]))
 
 huffmanClassObject.characteristics_huffman_code(huffman_code)

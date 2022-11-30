@@ -1,3 +1,4 @@
+'''
 def longest_common_substring(s1, s2):
     maxLongest = 0
     offset = 0
@@ -17,7 +18,7 @@ def longest_common_substring(s1, s2):
             else:
                 break
     return maxLongest, offset
-
+'''
 
 def encode_lz78(text):
     dictionary = dict()
@@ -69,7 +70,7 @@ else:
 print ("Введенная строка:",stringToEncode)
 [encodedNumbers, encodedLetters, dictionary] = encode_lz78(stringToEncode)
 a = [encodedNumbers, encodedLetters, dictionary]
-print("Сжатый файл, созданный как compressed.txt")
+print("Сжатый файл, создан как compressed.txt")
 output = open("compressed.txt","w+")
 output.write(str(a))
 print("Закодированная строка: ", end="")

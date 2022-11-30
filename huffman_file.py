@@ -135,6 +135,11 @@ class HuffmanCoding:
 			b = self.get_byte_array(padded_encoded_text) #делаем массив байтов
 			output.write(bytes(b)) #записываем его в файл вывода
 		
+		print ("Размер входного файла: ", os.path.getsize(self.path))
+		print ("Размер выходного файла: ", os.path.getsize(output_path))
+		
 		print(f"Частотный словарь: \n{frequency}\n Коды символов: \n{self.codes}\n ")
 		print("Файл сжат")
+
+
 		return output_path
