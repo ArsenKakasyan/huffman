@@ -118,7 +118,7 @@ class HuffmanCoding:
 		return b
 
 
-	def shannon(self, text):
+	def shannon(self, text): #считаем энтропию
 		total = sum(text.values()) 
 		return sum(freq / total * log2(total / freq) for freq in text.values()) #формула Шеннона
 	
@@ -143,13 +143,14 @@ class HuffmanCoding:
 			b = self.get_byte_array(padded_encoded_text) #делаем массив байтов
 			output.write(bytes(b)) #записываем его в файл вывода
 		
-		print ("Размер входного файла: ", os.path.getsize(self.path), "byte")
-		print ("Размер выходного файла: ", os.path.getsize(output_path), "byte")
 		
 		print(f"Частотный словарь: \n{frequency}\n Коды символов: \n{self.codes}\n Закодированный текст: \n{encoded_text}\n Отформатированный закодированный текст: \n{padded_encoded_text}\n")
 		
 		print(f"Энтропия Шеннона: {shannon_entropy}")
 
 		print("Файл сжат")
+
+		print ("Размер входного файла: ", os.path.getsize(self.path), "byte")
+		print ("Размер выходного файла: ", os.path.getsize(output_path), "byte")
 
 		return output_path
