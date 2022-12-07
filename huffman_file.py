@@ -24,7 +24,7 @@ class HuffmanCoding:
 		self.heap = []
 		self.codes = {}
 		self.reverse_mapping = {}
- 
+	
 	class HeapNode:
 		def __init__(self, char, freq):
 			self.char = char
@@ -115,7 +115,12 @@ class HuffmanCoding:
 			b.append(int(byte, 2))
 		return b
 
-
+	def bits_for_code(self, text):
+		bits = 0
+		for i in self.codes:
+			bits += self.codes[i].count('1') * text.count(i)
+		return bits
+		
 	def compress(self):
 		filename, file_extension = os.path.splitext(self.path) #разделяем расширение от имени файла
 		output_path = filename + ".bin" #сохраняем как бинарный
@@ -135,11 +140,13 @@ class HuffmanCoding:
 			b = self.get_byte_array(padded_encoded_text) #делаем массив байтов
 			output.write(bytes(b)) #записываем его в файл вывода
 		
-		print ("Размер входного файла: ", os.path.getsize(self.path))
-		print ("Размер выходного файла: ", os.path.getsize(output_path))
+		print ("Размер входного файла: ", os.path.getsize(self.path), "byte")
+		print ("Размер выходного файла: ", os.path.getsize(output_path), "byte")
 		
-		print(f"Частотный словарь: \n{frequency}\n Коды символов: \n{self.codes}\n ")
-		print("Файл сжат")
+		print(f"Частотный словарь: \n{frequency}\n Коды символов: \n{self.codes}\n Закодированный текст: \n{encoded_text}\n Отформатированный закодированный текст: \n{padded_encoded_text}\n")
+		
+		print(f"Количество бит на символ: {self.bits_for_code(text) / len(text)}")
 
+		print("Файл сжат")
 
 		return output_path

@@ -1,7 +1,7 @@
 from huffman_file import HuffmanCoding
 import sys
 
-path = "sample.txt"
+path = "input.txt"
 
 h = HuffmanCoding(path)
 

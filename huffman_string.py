@@ -111,11 +111,31 @@ huffmanClassObject = HuffmanCode(probabilities)
 P = probabilities
 
 huffman_code = huffmanClassObject.compute_code()
+'''
+# print huffman tree    
+print('Huffman tree:')
+for i in range(len(huffman_code)):
+    print(freq[i][0] + ' : ' + huffman_code[i])
 
+print("Символ\tЧастота\tКод")
+for i in range(len(freq)):
+    print("{}\t{}\t{}".format(freq[i][0], freq[i][1], huffman_code[i]))
+
+''' 
+print(' Huffman tree')
+print('-------------------')
+
+for id,char in enumerate(freq):
+    if huffman_code[id]=='':
+        print(' %-4r |%12s' % (char[0], 1))
+        continue
+    print(' %-4r |%12s' % (char[0], huffman_code[id]))
+'''
 print("Символ\tЧастота\tКод")
 print('---------------------------------')
 
 for i in range(len(freq)):
-    print("{}\t{}\t{}".format(freq[i][0], freq[i][1], huffman_code[i]))
+    print( "{}\t{}\t{}".format(freq[i][0], freq[i][1], huffman_code[i]))
+'''
 
 huffmanClassObject.characteristics_huffman_code(huffman_code)
