@@ -1,5 +1,7 @@
 import heapq
 import os
+from math import log2
+
 '''
 Сжатие:
 1. Создаем частотный словарь
@@ -115,11 +117,11 @@ class HuffmanCoding:
 			b.append(int(byte, 2))
 		return b
 
-	def bits_for_code(self, text):
-		bits = 0
-		for i in self.codes:
-			bits += self.codes[i].count('1') * text.count(i)
-		return bits
+
+	def shannon(self, text):
+		total = sum(text.values()) 
+		return sum(freq / total * log2(total / freq) for freq in text.values()) #формула Шеннона
+	
 		
 	def compress(self):
 		filename, file_extension = os.path.splitext(self.path) #разделяем расширение от имени файла
@@ -136,6 +138,7 @@ class HuffmanCoding:
 
 			encoded_text = self.get_encoded_text(text)
 			padded_encoded_text = self.pad_encoded_text(encoded_text)
+			shannon_entropy = self.shannon(frequency)
 
 			b = self.get_byte_array(padded_encoded_text) #делаем массив байтов
 			output.write(bytes(b)) #записываем его в файл вывода
@@ -145,7 +148,7 @@ class HuffmanCoding:
 		
 		print(f"Частотный словарь: \n{frequency}\n Коды символов: \n{self.codes}\n Закодированный текст: \n{encoded_text}\n Отформатированный закодированный текст: \n{padded_encoded_text}\n")
 		
-		print(f"Количество бит на символ: {self.bits_for_code(text) / len(text)}")
+		print(f"Энтропия Шеннона: {shannon_entropy}")
 
 		print("Файл сжат")
 
