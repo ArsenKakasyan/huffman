@@ -19,7 +19,6 @@ from math import log2
 3. Декодируйте биты - прочитайте биты и замените действительные биты кода Хаффмана символьными значениями.
 4. Сохраните декодированные данные в выходной файл.
 '''
-
 class HuffmanCoding:
 	def __init__(self, path):
 		self.path = path
@@ -120,8 +119,7 @@ class HuffmanCoding:
 
 	def shannon(self, text): #считаем энтропию
 		total = sum(text.values()) 
-		return sum(freq / total * log2(total / freq) for freq in text.values()) #формула Шеннона
-	
+		return sum(freq / total * log2(total / freq) for freq in text.values())
 		
 	def compress(self):
 		filename, file_extension = os.path.splitext(self.path) #разделяем расширение от имени файла
@@ -129,7 +127,7 @@ class HuffmanCoding:
 
 		with open(self.path, 'r+') as file, open(output_path, 'wb') as output: #открываем input файл в read mode, output файл в write-binary
 			text = file.read()
-			text = text.rstrip() #удаляем лишние пробелы
+			text = text.rstrip() #удаляем ли	шние пробелы
 
 			frequency = self.make_frequency_dict(text)
 			self.make_heap(frequency)
